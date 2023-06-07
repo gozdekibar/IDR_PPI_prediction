@@ -13,7 +13,11 @@ We provide:
 
 This prediction model is designed to analyze protein pairs that share a common protein within our model as described in the paper. If your protein pairs do not have a common protein in our model, the model will not produce a valid output
 
-#### 2. IDR-Based Protein Target Prediction Model
+#### 2. Unified model
+
+Depending on the pair type, this model will utilize either a symmetric or asymmetric model. If you're uncertain about which model to employ for testing the interactions, you can use this model. 
+
+#### 3. IDR-Based Protein Target Prediction Model
 This model is designed to identify potential interaction partners for a given protein. Unlike other prediction models that require pairs of proteins as input, this model only requires the user to input a single protein of interest. The model analyzes the intrinsically disordered regions (IDRs) of the provided protein and uses this information to generate a list of potential interaction partners.
 
 
@@ -71,6 +75,20 @@ Run:
 This command will use the asymmetric model to test the interactions for the provided protein pairs. The predicted interactions will be output to a file located at exampleDataRB1/RB1_predictions_out.txt
 
 
+
+ ## Example Usage - Unified Model
+ 
+This command will use our unified model to test the interactions
+
+- --input : features calculated from the preprocessing step
+
+- --pairs : Candidate pairs in tab separated format. Protein names should be Uniprot IDs.
+
+- --output : output file path for the predictions 
+ 
+ Run:
+
+    python3 unifiedModel.py --input ./features/output_RB1_protR.txt --pairs ./exampleDataRB1/RB_test_interactions_unified.txt --output ./exampleDataRB1/RB1_predictions_unified_out.txt
 
 
 
